@@ -1,0 +1,52 @@
+{
+  "stationList": [
+    {
+      "id": "01",
+      "name": "Tramore",
+      "latitude": "52.1623500",
+      "longitude": "-7.1524400",
+      "readings": [
+        {
+          "id": "02",
+          "code": "800",
+          "temp": "0.5",
+          "windSpeed": "3.5",
+          "windDirection": "220",
+          "pressure": "1001"
+        },
+        {
+          "id": "03",
+          "code": "600",
+          "temp": "6.0",
+          "windspeed": "2",
+          "winddirection": "200",
+          "pressure": "1004"
+        }
+        ]
+    },
+    {
+      "id": "05",
+      "name": "Dunmore",
+      "latitude": "52.149",
+      "longitude": "-6.994",
+      "readings": [
+        {
+          "id": "04",
+          "code": "700",
+          "temp": "8",
+          "windspeed": "1",
+          "winddirection": "90",
+          "pressure": "1000"
+        },
+        {
+          "id": "05",
+          "code": "500",
+          "temp": "15",
+          "windspeed": "12",
+          "winddirection": "10",
+          "pressure": "100"
+        } 
+      ]
+    }
+  ]
+}
