@@ -3,8 +3,8 @@
 const _ = require("lodash");
 const JsonStore = require("./json-store");
 
-const stationData = {
-  store: new JsonStore("./models/station-data.json", {
+const stationCollection = {
+  store: new JsonStore("./models/station-store.json", {
     stationList: []
   }),
   collection: "stationList",
@@ -65,4 +65,4 @@ const stationData = {
   }
 };
 
-module.exports = stationData;
+module.exports = stationCollection;
