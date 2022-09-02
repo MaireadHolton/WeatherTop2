@@ -11,30 +11,30 @@
     </tr>
   </thead>
   <tbody>
-     #{list items:_station.readings, as:'reading'}
+     {{#each station.readings}}
       <tr>
         <td>
-          ${reading.code}
+          {{reading.code}}
         </td>
         <td>
-          ${reading.temperature}
+          {{reading.temperature}}
         </td>
         <td>
-          ${reading.temperature}
+          {{reading.temperature}}
         </td>
         <td>        
-          ${reading.windSpeed}
+          {{reading.windSpeed}}
         </td>
         <td>
-          ${reading.windDirection}
+          {{reading.windDirection}}
         </td>
         <td>
-          ${reading.pressure}
+          {{reading.pressure}}
         </td>
          <td>
-            <a href="/stations/${_station.id}/deleteReading/${reading.id}" class="ui tiny red button">Delete Reading</a>
+            <a href="/stations/{{..station.id}}/deleteReading/{{id}}" class="ui tiny red button">Delete Reading</a>
           </td>         
       </tr>
-    #{/list}
+    {{/each}}
   </tbody>
 </table>
