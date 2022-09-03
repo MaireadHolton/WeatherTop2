@@ -1,23 +1,18 @@
 "use strict";
 
+const accounts = require("./accounts.js");
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
-const uuid = require("uuid");
-const accounts = require("./accounts.js");
 const station = require("./station.js");
+const uuid = require("uuid");
 
 const dashboard = {
   index(request, response) {
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
-    const stations = stationStore.getUserStations(loggedInUser.id);
-    stations.sort((a, b) => (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1)
-    //stations.sort(stations, (name));
-    //console.log(stations);
-
     const viewData = {
       title: "Station Dashboard ",
-      stations: stations,
+      stations: stationStore.getUserStations(loggedInUser.id)
     //  sortStations: sortStations,
     };
 
