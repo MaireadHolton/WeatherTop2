@@ -67,22 +67,22 @@ getReadings(station) {
     
     getIcon(station){
       let code = null;
-      HashMap<Integer, String> weatherIcons = null;
+      Map weatherIcons = null;
         if (readings.size() > 0) {
             code = readings.size();
             for (Reading reading : readings) {
                 code = reading.code;
                 {
-                    weatherIcons = new HashMap<Integer, String>();
-                    weatherIcons.put(0, "big red exclamation circle icon");
-                    weatherIcons.put(100, "big orange sun icon");
-                    weatherIcons.put(200, "big yellow cloud sun icon");
-                    weatherIcons.put(300, "big white cloud icon");
-                    weatherIcons.put(400, "big blue cloud sun rain icon");
-                    weatherIcons.put(500, "big grey cloud showers heavy icon");
-                    weatherIcons.put(600, "big grey cloud rain icon");
-                    weatherIcons.put(700, "big blue snowflake icon");
-                    weatherIcons.put(800, "big yellow bolt icon");
+                    const weatherIcons = new Map();
+                    weatherIcons.set(0, "big red exclamation circle icon");
+                    weatherIcons.set(100, "big orange sun icon");
+                    weatherIcons.set(200, "big yellow cloud sun icon");
+                    weatherIcons.set(300, "big white cloud icon");
+                    weatherIcons.set(400, "big blue cloud sun rain icon");
+                    weatherIcons.set(500, "big grey cloud showers heavy icon");
+                    weatherIcons.set(600, "big grey cloud rain icon");
+                    weatherIcons.set(700, "big blue snowflake icon");
+                    weatherIcons.set(800, "big yellow bolt icon");
                 }
             }
             return weatherIcons.get(code);
