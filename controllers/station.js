@@ -3,7 +3,6 @@
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
 const stationAnalytics = require("../utils/station-analytics");
-const stationConversions = require("../utils/station-conversions");
 const uuid = require("uuid");
 
 const station = {
@@ -11,19 +10,19 @@ const station = {
     const stationId = request.params.id;
     logger.debug("Station id = " + stationId);
     const station = stationStore.getStation(stationId);
-    const lastestReading = stationAnalytics.getReadings(station);
-    const lastestTemp = stationAnalytics.getReadingstemp(station);
-    const lastestCode = stationAnalytics.getReadingscode(station);
-    const lastestWindSpeed = stationAnalytics.getReadingsWindspeed(station);
-    const lastestWindDirection = stationAnalytics.getReadingsWinddirection(
+    const lastReading = stationAnalytics.getReadings(station);
+    const lastTemp = stationAnalytics.getTemp(station);
+    const lastCode = stationAnalytics.getCode(station);
+    const lastWindSpeed = stationAnalytics.getWindspeed(station);
+    const lastWindDirection = stationAnalytics.getWindDirection(
       station
     );
-    const lastestWind = stationConversions.beafourt(Number(lastestReading));
+    const lastWind = stationAnalytics.Beau(Number(lastestReading));
     //const calcTrend = stationAnalytics.calcTrend(station);
     const tempTrend = stationAnalytics.timeTrend(station);
     const pressureTrend = stationAnalytics.pressureTrend(station);
     //const Trend= stationAnalytics.calcTrend(station);
-    const tempTrendIcons = stationConversions.trendCodeIcons(station);
+    const tempTrendIcons = stationAnalytics.trendCodeIcons(station);
 
     const viewData = {
       name: "Station",
@@ -31,21 +30,21 @@ const station = {
       stationSummary: {
         maxReading: stationAnalytics.getMaxReading(station),
         minReading: stationAnalytics.getMinReading(station),
-        lastestReading: lastestReading,
-        weatherCode: stationConversions.getcodeToText(Number(lastestCode)),
-        beafourt: lastestWind,
-        winddirectionCompass: stationConversions.degreesToCompass(
-          Number(lastestWindDirection)
+        lastReading: lastestReading,
+        weatherCode: stationAnalytics.getcodeToText(Number(lastestCode)),
+        beaufort: lastWind,
+        windDirectionCompass: stationAnalytics.degreesToCompass(
+          Number(lastWindDirection)
         ),
-        tempF: stationConversions.gettempF(Number(lastestTemp)),
-        weatherCodeIcons: stationConversions.weatherCodeIcons(
+        tempF: stationAnalytics.getTempF(Number(lastestTemp)),
+        weatherCodeIcons: stationAnalytics.weatherCodeIcons(
           Number(lastestCode)
         ),
-        windChill: stationConversions.getwindChill(
-          lastestTemp,
-          lastestWindSpeed
+        windChill: stationAnalytics.getwindChill(
+          lastTemp,
+          lastWindSpeed
         ),
-        tempTrendIcons: stationConversions.trendCodeIcons(tempTrend),
+        tempTrendIcons: stationAnalytics.trendCodeIcons(tempTrend),
         tempTrend: tempTrend,
         pressureTrend:  pressureTrend
       }
@@ -81,8 +80,8 @@ const station = {
         today.getSeconds(),
       code: request.body.code,
       temp: request.body.temp,
-      windspeed: request.body.windspeed,
-      winddirection: request.body.winddirection,
+      windSpeed: request.body.windspeed,
+      windDirection: request.body.windDirection,
       pressure: request.body.pressure
     };
     logger.debug("New Reading = ", newReading);

@@ -23,8 +23,8 @@ const reading = {
     const newReading = {
       code: request.body.code,
       temp: request.body.temp,
-      windspeed: request.body.windspeed,
-      winddirection: request.body.winddirection,
+      windSpeed: request.body.windspeed,
+      windDirection: request.body.windDirection,
       pressure: request.body.pressure
     };
     logger.debug(`Updating Reading ${readingId} from Station ${stationId}`);
