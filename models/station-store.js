@@ -3,11 +3,11 @@
 const _ = require("lodash");
 const JsonStore = require("./json-store");
 
-const stationCollection = {
+const stationStore = {
   store: new JsonStore("./models/station-store.json", {
-    stationList: []
+    stationCollection: []
   }),
-  collection: "stationList",
+  collection: "stationCollection",
 
   getAllStations() {
     return this.store.findAll(this.collection);

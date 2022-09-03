@@ -3,11 +3,11 @@
     
 const stationAnalytics = {
   getReadings(station) {
-    let lastReading = null;
+    let readings = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1];
     }
-    return lastReading;
+    return readings;
   },
   
   getMaxReading(station) {
@@ -101,50 +101,50 @@ getTempF(temp) {
 getWindSpeed(station) {
   let lastWindSpeed = 0;
     if (station.readings.length > 0) {
-      readings = station.readings[station.readings.length - 1].windspeed;
+      readings = station.readings[station.readings.length - 1].windSpeed;
     }
     return lastWindSpeed;
   },
       
   getBeaufort (windSpeed){
     let Beau = null;
-      if (windspeed == 0) {
+      if (windSpeed == 0) {
       return 0;
       Beau= "Calm";
-    } else if (windspeed >= 1 && windspeed <= 5) {
+    } else if (windSpeed >= 1 && windSpeed <= 5) {
       return 1;
       Beau = "Light Air";
-    } else if (windspeed >= 6 && windspeed <= 11) {
+    } else if (windSpeed >= 6 && windSpeed <= 11) {
       return 2;
       Beau = "Light breeze";
-    } else if (windspeed >= 12 && windspeed <= 19) {
+    } else if (windSpeed >= 12 && windSpeed <= 19) {
       return 3;
       Beau = "Gentle Breeze";
-    } else if (windspeed >= 20 && windspeed <= 28) {
+    } else if (windSpeed >= 20 && windSpeed <= 28) {
       return 4;
       Beau = "Moderate breeze";
-    } else if (windspeed >= 29 && windspeed <= 38) {
+    } else if (windSpeed >= 29 && windSpeed <= 38) {
       return 5;
       Beau = "Freah breeze";
-    } else if (windspeed >= 39 && windspeed <= 49) {
+    } else if (windSpeed >= 39 && windSpeed <= 49) {
       return 6;
       Beau = "Strong breeze";
-    } else if (windspeed >= 50 && windspeed <= 61) {
+    } else if (windSpeed >= 50 && windSpeed <= 61) {
       return 7;
       Beau = "Near gale";
-    } else if (windspeed >= 62 && windspeed <= 74) {
+    } else if (windSpeed >= 62 && windSpeed <= 74) {
       return 8;
       Beau = "Gale";
-    } else if (windspeed >= 75 && windspeed <= 88) {
+    } else if (windSpeed >= 75 && windSpeed <= 88) {
       return 9;
       Beau = "Severe gale";
-    } else if (windspeed >= 89 && windspeed <= 102) {
+    } else if (windSpeed >= 89 && windSpeed <= 102) {
       return 10;
       Beau = "Strong storm";
-    } else if (windspeed >= 103 && windspeed <= 117) {
+    } else if (windSpeed >= 103 && windSpeed <= 117) {
       return 11;
       Beau = "Violent storm";
-    } else if (windspeed >= 117) {
+    } else if (windSpeed >= 117) {
       return 12;
     }
     return -1;
@@ -152,11 +152,11 @@ getWindSpeed(station) {
   },
       
 getWindDirection(station) {
-    let windDir = null;
+    let windDirection = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].windDirection;
     }
-    return windDir;
+    return windDirection;
   },
      
 getWindComp (windDirection) {
