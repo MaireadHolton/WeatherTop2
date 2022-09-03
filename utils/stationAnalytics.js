@@ -209,9 +209,9 @@ getWindComp (windDirection) {
       readings = station.readings[station.readings.length - 1].pressure;
     }
     return lastPressure;
-  },    
+  };    
       
       
-
+module.exports = stationAnalytics;
 
       
