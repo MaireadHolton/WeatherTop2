@@ -1,14 +1,15 @@
 "use strict";
 
-getReadings(station) {
+    
+const stationAnalytics = {
+  getReadings(station) {
     let lastReading = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1];
     }
     return lastReading;
   },
-    
-  const stationAnalytics = {
+  
   getMaxReading(station) {
     let maxReading = null;
     if (station.readings.length > 0) {
@@ -209,7 +210,8 @@ getWindComp (windDirection) {
       readings = station.readings[station.readings.length - 1].pressure;
     }
     return lastPressure;
-  };    
+  }
+};    
       
       
 module.exports = stationAnalytics;

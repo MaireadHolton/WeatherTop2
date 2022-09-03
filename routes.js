@@ -19,12 +19,12 @@ router.post('/authenticate', accounts.authenticate);
 
 router.get("/dashboard", dashboard.index);
 router.get("/dashboard/deletestation/:id", dashboard.deleteStation);
-router.post("/dashboard/add-station", dashboard.addStation);
+router.post("/dashboard/addstation", dashboard.addStation);
 
 router.get("/about", about.index);
 router.get('/station/:id', station.index);
 router.get('/station/:id/deletereading/:readingid', station.deleteReading);
-router.post('/station/:id/add-reading', station.addReading);
+router.post('/station/:id/addreading', station.addReading);
 
 router.get("/reading/:id/editreading/:readingid", reading.index);
 router.post("/reading/:id/updatereading/:readingid", reading.update);
