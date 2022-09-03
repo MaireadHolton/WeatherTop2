@@ -17,12 +17,8 @@ const station = {
     const lastWindDirection = stationAnalytics.getWindDirection(
       station
     );
-    const lastWind = stationAnalytics.Beau(Number(lastestReading));
-    //const calcTrend = stationAnalytics.calcTrend(station);
-    const tempTrend = stationAnalytics.timeTrend(station);
-    const pressureTrend = stationAnalytics.pressureTrend(station);
-    //const Trend= stationAnalytics.calcTrend(station);
-    const tempTrendIcons = stationAnalytics.trendCodeIcons(station);
+    const lastWind = stationAnalytics.Beau(Number(lastReading));
+    const lastPressureTrend = stationAnalytics.getPressure(station);
 
     const viewData = {
       name: "Station",
@@ -30,25 +26,22 @@ const station = {
       stationSummary: {
         maxReading: stationAnalytics.getMaxReading(station),
         minReading: stationAnalytics.getMinReading(station),
-        lastReading: lastestReading,
-        weatherCode: stationAnalytics.getcodeToText(Number(lastestCode)),
+        lastReading: lastReading,
+        weatherCode: stationAnalytics.getCodeToWeather(Number(lastCode)),
         beaufort: lastWind,
-        windDirectionCompass: stationAnalytics.degreesToCompass(
+        WindComp: stationAnalytics.getWindComp(
           Number(lastWindDirection)
         ),
-        tempF: stationAnalytics.getTempF(Number(lastestTemp)),
-        weatherCodeIcons: stationAnalytics.weatherCodeIcons(
-          Number(lastestCode)
+        tempF: stationAnalytics.getTempF(Number(lastTemp)),
+        weatherCodeIcons: stationAnalytics.getWeatherCodeIcons(
+          Number(lastCode)
         ),
-        windChill: stationAnalytics.getwindChill(
+        windChill: stationAnalytics.getWindChill(
           lastTemp,
           lastWindSpeed
-        ),
-        tempTrendIcons: stationAnalytics.trendCodeIcons(tempTrend),
-        tempTrend: tempTrend,
-        pressureTrend:  pressureTrend
-      }
-    };
+        )
+    }
+  };
     response.render("station", viewData);
   },
 
@@ -66,21 +59,9 @@ const station = {
     const today = new Date();
     const newReading = {
       id: uuid.v1(),
-      date:
-        today.getFullYear() +
-        "-" +
-        (today.getMonth() + 1) +
-        "-" +
-        today.getDate() +
-        " " +
-        (today.getHours() + 1) +
-        ":" +
-        today.getMinutes() +
-        ":" +
-        today.getSeconds(),
       code: request.body.code,
       temp: request.body.temp,
-      windSpeed: request.body.windspeed,
+      windSpeed: request.body.windSpeed,
       windDirection: request.body.windDirection,
       pressure: request.body.pressure
     };

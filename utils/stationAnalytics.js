@@ -1,14 +1,14 @@
 "use strict";
 
 getReadings(station) {
-    let readings = null;
+    let lastReading = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1];
     }
-    return readings;
+    return lastReading;
   },
     
-    const stationAnalytics = {
+  const stationAnalytics = {
   getMaxReading(station) {
     let maxReading = null;
     if (station.readings.length > 0) {
@@ -62,7 +62,7 @@ getCodeToWeather(code) {
     }
   },
       
- weatherCodeIcons(code) {
+ getWeatherCodeIcons(code) {
     switch (code) {
       case 100:
         return "sun icon";
@@ -150,7 +150,7 @@ getWindSpeed(station) {
     return Beau;
   },
       
-getWinddirection(station) {
+getWindDirection(station) {
     let windDir = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].windDirection;
@@ -204,11 +204,11 @@ getWindComp (windDirection) {
   },
       
   getPressure(station) {
-    let last = null;
+    let lastPressure = null;
     if (station.readings.length > 0) {
-      readings = station.readings[station.readings.length - 1].windDirection;
+      readings = station.readings[station.readings.length - 1].pressure;
     }
-    return windDir;
+    return lastPressure;
   },    
       
       
