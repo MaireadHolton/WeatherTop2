@@ -1,7 +1,15 @@
 <table class="ui table">
     <tbody>
-    {{#each station.readings}}
       <thead>
+        <tr>
+      <th> Code </th>
+  <th> Temp </th>
+  <th> Wind Speed </th>
+  <th> Wind Direction </th>
+  <th> Pressure </th>
+         </tr> 
+        </thead>
+    {{#each station.readings}}
       <tr>
         <td>
           {{code}}
@@ -23,14 +31,6 @@
             <i class="icon trash"></i>
         </td>
       </tr>
-    </thead>
    {{/each}}
-      <tr>
-  <th> Code </th>
-  <th> Temp </th>
-  <th> Wind Speed </th>
-  <th> Wind Direction </th>
-  <th> Pressure </th>
-</tr>
   </tbody>
 </table>
