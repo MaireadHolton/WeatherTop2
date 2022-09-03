@@ -3,94 +3,42 @@
 <section class="ui inverted teal table">
   <thead>
     <tr>
-    <th>{{station.name}}</th>
-    <th>Weather</th>
-    <th>Temp.</th>
-    <th>Wind</th>
-    <th>Pressure</th>
+    <th>{{station.name}}<i class="big purple map marker alternate icon"> </i></th>
+    <th>Weather <i class ="${station.weatherIcon}"></i></th>
+    <th>Temp. <i class="big red thermometer icon"></i></th>
+    <th>Wind <i class="big white wind icon"></i></th>
+    <th>Pressure <i class="big yellow tachometer alternate icon"></th>
     </tr>
   </thead>
+  
   <tbody>
   <tr>
   <td>{{station.latitude}}</td>
   <td>{{station.longitude}}</td>
   <td>{{stationsummary.weatherCode}} <i class="{{stationSummary.weatherCodeIcons}} large red"></i></td>
-  <td>{{stationSummary.lastReading.temp}} C</td>
+  <td>{{stationSummary.lastReading.temp}} C <br>
+      {{stationSummary.tempF}} F <br>
+      Max: {{stationSummary.maxReading.temp}} <br>
+      Min: {{stationSummary.minReading.temp}}</td>
+  <td>{{stationSummary.beaufort}} bft <br>
+      {{stationSummary.windComp}} <br>
+      Feels like: {{stationSummary.windChill}} <br>
+      Max: {{stationSummary.maxReading.windSpeed}} <br>
+      Min: {{stationSummary.minReading.windSpeed}}
+    </td>
+    <td>{{stationSummary.lastReading.pressure}} hpa<br>
+    Max: {{stationSummary.maxReading.pressure}} <br>
+    Min: {{stationSummary.minReading.pressure}}</td>
     </tr>
   </tbody>
- <section class="ui segment" action="/stations/${_station.id}/addlatestreadings" method="POST">
-    <div class="ui five inverted stackable cards">
-       <div class="card">
-            <div class="extra">
-                <h3 class="header">
-                    {{name}}{{station.name}}<i class="big purple map marker alternate icon""></i>
-                  
-                </h3>
-                <h4> 
-                    Lat: {{station.latitude}}
-                    <br>
-                    Lng:{{station.longitude}}
-                </h4>
-            </div>
-        </div>
-        <div class="card">
-            <div class="extra">
-                <h3 class="header">
-                    Weather 
-                </h3>
-                <h4 class="header"> {{stationSummary.weatherCode}}
-                  <i class="{{stationSummary.weatherCodeIcons}} large red"></i>
-                </h4>
-            </div>
-        </div>
-        <div class="card">
-            <div class="extra">
-                <h3 class="header">
-                    Temp <i class="big red thermometer icon"></i>
-                </h3>
-                <h4 class="header">
-                      {{stationSummary.lastReading.temp}} C
-                      <br>
-                     {{stationSummary.tempF}} F
-                    <br>
-                     Max: {{stationSummary.maxReading.temp}}
-                      <br>
-                      Min: {{stationSummary.minReading.temp}}
-                    <br>
-                </h4>
-            </div>
-        </div>
-        <div class="card">
-            <div class="extra">
-                <h3 class="header">
-                    Wind <i class="big white wind icon"></i>
-                </h3>
-                <h4 class="header">
-                    {{stationSummary.beaufort}} bft
-                    <br>
-                   {{stationSummary.windComp}} 
-                    <br>
-                    Feels like: {{stationSummary.windChill}} 
-                    <br>
-                    Max: {{stationSummary.maxReading.windSpeed}}
-                    <br>
-                    Min: {{stationSummary.minReading.windSpeed}}
-                </h4>
-            </div>
-        </div>
-        <div class="card">
-            <div class="extra">
-                <h3 class="header">
-                    Pressure <i class="big yellow tachometer alternate icon"></i>
-                </h3>
-                <h4 class="header">
-                    {{stationSummary.lastReading.pressure}} hpa
-                    <br>
-                    Max: {{stationSummary.maxReading.pressure}}
-                    <br>
-                    Min: {{stationSummary.minReading.pressure}}
-                </h4>
-            </div>
-        </div>
-    </div>
 </section>
+  
+<section class="ui segment">
+  <h2 class="ui header">
+    {{station.name}}
+  </h2>
+  {{> listreadings}}
+  {{> addReading}}
+</section>
+  
+ 
