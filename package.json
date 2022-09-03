@@ -1,7 +1,7 @@
 {
-  "name": "glitch-template",
+  "name": "weatherTop 2",
   "version": "0.0.1",
-  "description": "Starter project for learning glitch and express",
+  "description": "eatherTop 2 App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -19,7 +19,7 @@
     "winston": "^3.3.3"
   },
   "repository": {
-    "url": "https://github.com/wit-hdip-comp-sci-2021/glitch-template"
+    "url": "https://github.com/wit-hdip-comp-sci-2021/playlist-5"
   },
   "license": "MIT",
   "keywords": [
@@ -35,3 +35,4 @@
     "prettier": "^2.3.0"
   }
 }
+

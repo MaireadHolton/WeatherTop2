@@ -65,4 +65,4 @@ const stationStore = {
   }
 };
 
-module.exports = stationCollection;
+module.exports = stationStore;
