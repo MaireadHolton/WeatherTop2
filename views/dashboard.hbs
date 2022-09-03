@@ -1,16 +1,6 @@
 {{> menu id="dashboard"}}
 
-{{#each stations}}
-  <section class="ui stacked segment">
-    <h2 class= "ui header">
-      {{stationname}}
-      {{>station}}
-    </h2>
-    <a href="/station/{{id}}" class="ui icon button">
-      <i class="icon folder open"></i>
-    </a>
-    <a href="/dashboard/deletestation/{{id}}" class="ui icon button">
-      <i class="red icon trash"></i>
-    </a>
-  </section>
-{{/each}}
+<section class="ui segment">
+  {{> liststations}}
+  {{> addstation}}
+</section>
