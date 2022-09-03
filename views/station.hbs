@@ -1,9 +1,23 @@
 {{> menu}}
 
-<section class="ui center aligned middle aligned segment">
-  <h2 class="ui header">
-    {{station.title}}
-  </h2>
+<section class="ui inverted teal table">
+  <thead>
+    <tr>
+    <th>{{station.name}}</th>
+    <th>Weather</th>
+    <th>Temp.</th>
+    <th>Wind</th>
+    <th>Pressure</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>{{station.latitude}}</td>
+  <td>{{station.longitude}}</td>
+  <td>{{stationsummary.weatherCode}} <i class="{{stationSummary.weatherCodeIcons}} large red"></i></td>
+  <td>{{stationSummary.lastReading.temp}} C</td>
+    </tr>
+  </tbody>
  <section class="ui segment" action="/stations/${_station.id}/addlatestreadings" method="POST">
     <div class="ui five inverted stackable cards">
        <div class="card">
