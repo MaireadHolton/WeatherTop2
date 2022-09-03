@@ -32,66 +32,110 @@ getReadings(station) {
   },
       
   getCode(station) {
-    let readings = null;
+    let lastCode = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].code;
     }
-    return readings;
+    return lastCode;
   },
       
-  getWeather(station){
-    let lastWeather = null;
-    if (station.readings.length > 0) {
-        for (Reading reading : readings) {
-            if (reading.code == 100) {
-              lastWeather = "Clear";
-              } else if (reading.code == 200) {
-              lastWeather = "partial clouds";
-              } else if (reading.code == 300) {
-              lastWeather = "Cloudy";
-              } else if (reading.code == 400) {
-              lastWeather = "Light Showers";
-              } else if (reading.code == 500) {
-              lastWeather = "Heavy Showers";
-              } else if (reading.code == 600) {
-              lastWeather = "Rain";
-              } else if (reading.code == 700) {
-              lastWeather = "Snow";
-              } else if (reading.code == 800) {
-              lastWeather = "Thunder";
-              }
-            }
-        }
-        return lastWeather;
+getCodeToWeather(code) {
+    switch (code) {
+      case 100:
+        return "Clear";
+      case 200:
+        return "Partial Clouds";
+      case 300:
+        return "Cloudy";
+      case 400:
+        return "Light Showers";
+      case 500:
+        return "Heavy Showers";
+      case 600:
+        return "Rain";
+      case 700:
+        return "Snow";
+      case 800:
+        return "Thunder";
+      default:
+        return "error";
+    }
   },
-    
-    getIcon(station){
-      let code = null;
-      Map weatherIcons = null;
-        if (readings.size() > 0) {
-            code = readings.size();
-            for (Reading reading : readings) {
-                code = reading.code;
-                {
-                    const weatherIcons = new Map();
-                    weatherIcons.set(0, "big red exclamation circle icon");
-                    weatherIcons.set(100, "big orange sun icon");
-                    weatherIcons.set(200, "big yellow cloud sun icon");
-                    weatherIcons.set(300, "big white cloud icon");
-                    weatherIcons.set(400, "big blue cloud sun rain icon");
-                    weatherIcons.set(500, "big grey cloud showers heavy icon");
-                    weatherIcons.set(600, "big grey cloud rain icon");
-                    weatherIcons.set(700, "big blue snowflake icon");
-                    weatherIcons.set(800, "big yellow bolt icon");
-                }
-            }
-            return weatherIcons.get(code);
-        }
-        else {
-            code = 0;
-        }
-        return null;
-    },
+      
+ weatherCodeIcons(code) {
+    switch (code) {
+      case 100:
+        return "sun icon";
+      case 200:
+        return "cloud sun icon";
+      case 300:
+        return "cloud icon";
+      case 400:
+        return "cloud sun rain icon";
+      case 500:
+        return "cloud showers heavy icon";
+      case 600:
+        return "cloud rain icon";
+      case 700:
+        return "snowflake icon";
+      case 800:
+        return "bolt icon";
+      default:
+        return "error";
+    }
+  },
+
+getTemp(station) {
+    let lastTemp = null;
+    if (station.readings.length > 0) {
+      readings = station.readings[station.readings.length - 1].temp;
+    }
+    return lastTemp;
+  },
+      
+getTempF(temp) {
+    return temp * 1.8 + 32;
+  },
+      
+getWindSpeed(station) {
+  let lastWindSpeed = 0;
+    if (station.readings.length > 0) {
+      readings = station.readings[station.readings.length - 1].windspeed;
+    }
+    return lastWindSpeed;
+  },
+      
+  getBeaufort (windSpeed){
+        if (windspeed == 0) {
+      return 0;
+    } else if (windspeed >= 1 && windspeed <= 5) {
+      return 1;
+    } else if (windspeed >= 6 && windspeed <= 11) {
+      return 2;
+    } else if (windspeed >= 12 && windspeed <= 19) {
+      return 3;
+    } else if (windspeed >= 20 && windspeed <= 28) {
+      return 4;
+    } else if (windspeed >= 29 && windspeed <= 38) {
+      return 5;
+    } else if (windspeed >= 39 && windspeed <= 49) {
+      return 6;
+    } else if (windspeed >= 50 && windspeed <= 61) {
+      return 7;
+    } else if (windspeed >= 62 && windspeed <= 74) {
+      return 8;
+    } else if (windspeed >= 75 && windspeed <= 88) {
+      return 9;
+    } else if (windspeed >= 89 && windspeed <= 102) {
+      return 10;
+    } else if (windspeed >= 103 && windspeed <= 117) {
+      return 11;
+    } else if (windspeed >= 117) {
+      return 12;
+    }
+    return -1;
+  },
+
       
 
 
