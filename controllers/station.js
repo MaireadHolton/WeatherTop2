@@ -2,7 +2,7 @@
 
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
-const stationAnalytics = require("../utils/station-analytics");
+const stationAnalytics = require("../utils/stationAnalytics");
 const uuid = require("uuid");
 
 const station = {

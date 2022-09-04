@@ -12,7 +12,7 @@ const dashboard = {
     const loggedInUser = accounts.getCurrentUser(request);
     const viewData = {
       title: "Station Dashboard ",
-      stations: stationStore.getUserStations(loggedInUser.id)
+      stations: stationStore.getUserStations(loggedInUser)
     //  sortStations: sortStations,
     };
 
