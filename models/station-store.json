@@ -183,6 +183,67 @@
       "latitude": "",
       "longitude": "",
       "readings": []
+    },
+    {
+      "id": "667b9720-2f9d-11ed-8432-cb03a1830bf9",
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "67e623a0-2f9d-11ed-8432-cb03a1830bf9",
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "67f58cf0-2f9d-11ed-8432-cb03a1830bf9",
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "87c810c0-2f9d-11ed-9881-97e31501281d",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "882b6670-2f9d-11ed-9881-97e31501281d",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "88553590-2f9d-11ed-9881-97e31501281d",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "88bbe6a0-2f9d-11ed-9881-97e31501281d",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "8f019550-2f9d-11ed-9881-97e31501281d",
+      "user": null,
+      "name": "Ardmore",
+      "latitude": "67",
+      "longitude": "98",
+      "readings": []
     }
   ]
 }
