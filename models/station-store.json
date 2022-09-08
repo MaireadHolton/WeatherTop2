@@ -1,5 +1,5 @@
 {
- "stationCollection": [
+  "stationCollection": [
     {
       "id": "01",
       "name": "Tramore",
@@ -135,6 +135,54 @@
           "pressure": "976"
         }
       ]
+    },
+    {
+      "id": "05ce4ad0-2f9d-11ed-8d4a-1f761abca53b",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "07d7d670-2f9d-11ed-8d4a-1f761abca53b",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "08216290-2f9d-11ed-8d4a-1f761abca53b",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "084e3ef0-2f9d-11ed-8d4a-1f761abca53b",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "087c05b0-2f9d-11ed-8d4a-1f761abca53b",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
+    },
+    {
+      "id": "089ab140-2f9d-11ed-8d4a-1f761abca53b",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
     }
   ]
 }

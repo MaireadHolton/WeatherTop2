@@ -31,7 +31,7 @@ const dashboard = {
     const loggedInUser = accounts.getCurrentUser(request);
     const newStation = {
       id: uuid.v1(),
-      userid: loggedInUser.id,
+      user: loggedInUser,
       name: request.body.name,
       latitude: request.body.latitude,
       longitude: request.body.longitude,
