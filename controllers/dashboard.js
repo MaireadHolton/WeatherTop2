@@ -13,7 +13,6 @@ const dashboard = {
     const viewData = {
       title: "Station Dashboard ",
       stations: stationStore.getUserStations(loggedInUser)
-    //  sortStations: sortStations,
     };
 
     logger.info("about to render", stationStore.getAllStations());
