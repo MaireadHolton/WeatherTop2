@@ -3,7 +3,7 @@
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
 const stationAnalytics = require("../utils/stationAnalytics");
-const uuid = require("uuid");
+//const uuid = require("uuid");
 
 const station = {
   index(request, response) {
@@ -47,7 +47,7 @@ const station = {
     const stationId = request.params.id;
     const station = stationStore.getStation(stationId);
     const newReading = {
-      id: uuid.v1(),
+      //id: uuid.v1(),
       code: request.body.code,
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,

@@ -39,9 +39,9 @@ const stationStore = {
     this.store.save();
   },
 
-  getUserStations(userid) {
+  /*getUserStations(userid) {
     return this.store.findBy(this.collection, { userid: userid });
-  },
+  },*/
 
   removeReading(id, readingId) {
     const station = this.getStation(id);
