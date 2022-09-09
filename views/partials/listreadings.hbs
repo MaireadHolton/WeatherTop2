@@ -1,43 +1,25 @@
 <section class="ui inverted teal table">
   <thead>
-    <tr>
-    <th>{{stationName}}<i class="big purple map marker alternate icon"> </i></th>
-    <th>Weather <i class ="${station.weatherIcon}"></i></th>
-    <th>Temp. <i class="big red thermometer icon"></i></th>
-    <th>Wind <i class="big white wind icon"></i></th>
-      <th>Pressure <i class="big yellow tachometer alternate icon"></i></th>
-    </tr>
+     <th>Weather Code</th>
+      <th>Temp °C</th>
+      <th>Temp °F</th>
+      <th>Wind Speed (km/hr)</th>
+      <th>Wind Direction</th> 
+      <th>Pressure (hPa)</th>
+      <th>Delete</th>
   </thead>
   
   <tbody>
     {{#each station.readings}}
   <tr>
-  <td>{{station.latitude}}</td>
-  <td>{{station.longitude}}</td>
-  <td>{{stationsummary.weatherCode}} <i class="{{stationSummary.weatherCodeIcons}} large red"></i></td>
-  <td>{{stationSummary.lastReading.temp}} C <br>
-      {{stationSummary.tempF}} F <br>
-      Max: {{stationSummary.maxReading.temp}} <br>
-      Min: {{stationSummary.minReading.temp}}</td>
-  <td>{{stationSummary.beaufort}} bft <br>
-      {{stationSummary.windComp}} <br>
-      Feels like: {{stationSummary.windChill}} <br>
-      Max: {{stationSummary.maxReading.windSpeed}} <br>
-      Min: {{stationSummary.minReading.windSpeed}}
-    </td>
-    <td>{{stationSummary.lastReading.pressure}} hpa<br>
-    Max: {{stationSummary.maxReading.pressure}} <br>
-    Min: {{stationSummary.minReading.pressure}}</td>
-    <td>
-          <a href="/reading/{{../station.id}}/editreading/{{id}}" class="ui icon button">
-            <i class="pencil alternate icon"></i>
-          </a>
-        </td>
-        <td>
-          <a href="/station/{{../station.id}}/deletereading/{{id}}" class="ui icon button">
-            <i class="icon trash"></i>
-          </a>
-        </td>
+  <td>{{reading.code}}</td>
+  <td>{{reading.temp}} C</td>
+  <td>{{reading.temp}} C</td>
+  <td>{{reading.windSpeed}} </td>
+  <td>{{reading.windDir}} </td>
+  <td>{{reading.pressure}} </td>
+  <td> <a href="/station/deletereading/{{readingId}}" class="ui icon button">
+      <i class="red icon trash"></i>Delete Reading</a> </td>
     </tr>
     {{/each}}
   </tbody>
