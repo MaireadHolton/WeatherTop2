@@ -3,13 +3,13 @@
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
 const stationAnalytics = require("../utils/stationAnalytics");
-//const uuid = require("uuid");
+const uuid = require("uuid");
 
 const station = {
   index(request, response) {
-    const stationId = request.params.id;
-    logger.debug("Station id = " + stationId);
-    const station = stationStore.getStation(stationId);
+    const stationName = request.params.name;
+    logger.debug("Station id = " + stationName);
+    const station = stationStore.getStation(stationName);
     const readings = stationAnalytics.getReadings (station);
     const lastTemp = stationAnalytics.getTemp(station);
     const lastCode = stationAnalytics.getCode(station);
@@ -36,18 +36,18 @@ const station = {
   },
 
   deleteReading(request, response) {
-    const stationId = request.params.id;
+    const stationName = request.params.name;
     const readingId = request.params.readingid;
-    logger.debug(`Deleting Reading ${readingId} from Station ${stationId}`);
-    stationStore.removeReading(stationId, readingId);
-    response.redirect("/station/" + stationId);
+    logger.debug(`Deleting Reading ${readingId} from Station ${stationName}`);
+    stationStore.removeReading(stationName, readingId);
+    response.redirect("/station/" + stationName);
   },
 
   addReading(request, response) {
-    const stationId = request.params.id;
-    const station = stationStore.getStation(stationId);
+    const stationName = request.params.name;
+    const station = stationStore.getStation(stationName);
     const newReading = {
-      //id: uuid.v1(),
+      id: uuid.v1(),
       code: request.body.code,
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,
@@ -55,8 +55,8 @@ const station = {
       pressure: request.body.pressure
     };
     logger.debug("New Reading = ", newReading);
-    stationStore.addReading(stationId, newReading);
-    response.redirect("/station/" + stationId);
+    stationStore.addReading(stationName, newReading);
+    response.redirect("/station/" + stationName);
   }
 };
 

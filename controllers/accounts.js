@@ -2,7 +2,7 @@
 
 const userstore = require("../models/user-store");
 const logger = require("../utils/logger");
-//const uuid = require("uuid");
+const uuid = require("uuid");
 
 const accounts = {
   index(request, response) {
@@ -20,7 +20,7 @@ const accounts = {
   },
 
   logout(request, response) {
-    //response.cookie("station", "");
+    response.cookie("station", "");
     response.redirect("/");
   },
 
@@ -33,13 +33,13 @@ const accounts = {
 
   register(request, response) {
     const user = request.body;
-    //user.id = uuid.v1();
+    user.id = uuid.v1();
     userstore.addUser(user);
     logger.info(`registering ${user.email}`);
     response.redirect("/");
   },
 
- /* authenticate(request, response) {
+ authenticate(request, response) {
     const user = userstore.getUserByEmail(request.body.email);
     const password = userstore.getUserByPassword(request.body.password);
     if (user && password) {
@@ -58,7 +58,7 @@ const accounts = {
     } else {
       return null;
     }
-  }*/
+  }
 };
 
 module.exports = accounts;

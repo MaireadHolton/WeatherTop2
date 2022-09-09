@@ -2,25 +2,24 @@
 
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
-//const uuid = require("uuid");
 
 const reading = {
   index(request, response) {
-    const stationId = request.params.id;
+    const stationName = request.params.name;
     const readingId = request.params.readingid;
-    logger.debug(`Editing Reading ${readingId} from Station ${stationId}`);
+    logger.debug(`Editing Reading ${readingId} from Station ${stationName}`);
     const viewData = {
       title: "Edit Reading",
-      station: stationStore.getStation(stationId),
-      reading: stationStore.getReading(stationId, readingId)
+      station: stationStore.getStation(stationName),
+      reading: stationStore.getReading(stationName, readingId)
     };
     response.render("reading", viewData);
   },
 
   update(request, response) {
-    const stationId = request.params.id;
+    const stationName = request.params.name;
     const readingId = request.params.readingid;
-    const reading = stationStore.getReading(stationId, readingId);
+    const reading = stationStore.getReading(stationName, readingId);
     const newReading = {
       code: request.body.code,
       temp: request.body.temp,
@@ -28,9 +27,9 @@ const reading = {
       windDir: request.body.windDir,
       pressure: request.body.pressure
     };
-    logger.debug(`Updating Reading ${readingId} from Station ${stationId}`);
+    logger.debug(`Updating Reading ${readingId} from Station ${stationName}`);
     stationStore.updateReading(reading, newReading);
-    response.redirect("/station/" + stationId);
+    response.redirect("/station/" + stationName);
   }
 };
 
