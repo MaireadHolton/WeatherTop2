@@ -1,7 +1,7 @@
 {
-  "name": "weatherTop 2",
+  "name": "weatherTop-2",
   "version": "0.0.1",
-  "description": "eatherTop 2 App",
+  "description": "WeatherTop2App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
