@@ -46,7 +46,8 @@ const dashboard = {
       user: loggedInUser.id,
       name: request.body.name,
       latitude: request.body.latitude,
-      longitude: request.body.longitude
+      longitude: request.body.longitude,
+      readings: []
     };
     logger.debug("Creating a new Station", newStation);
     stationStore.addStation(newStation);
