@@ -216,26 +216,26 @@ const stationAnalytics = {
     return Beau;
   },
 
-  getWindDirection(station) {
-    let windDirection = null;
+  getWindDir(station) {
+    let windDir = null;
     if (station.readings.length > 0) {
-      readings = station.readings[station.readings.length - 1].windDirection;
+      readings = station.readings[station.readings.length - 1].windDir;
     }
-    return windDirection;
+    return windDir;
   },
 
-  getWindComp(windDirection) {
-    if (windDirection > 11.25 && windDirection <= 33.75) {
+  getWindComp(windDir) {
+    if (windDir > 11.25 && windDir <= 33.75) {
       return "North North East";
-    } else if (windDirection > 33.75 && windDirection <= 56.25) {
+    } else if (windDir > 33.75 && windDir <= 56.25) {
       return "East North East";
-    } else if (windDirection > 56.25 && windDirection <= 78.75) {
+    } else if (windDir > 56.25 && windDir <= 78.75) {
       return "East";
-    } else if (windDirection > 78.75 && windDirection <= 101.25) {
+    } else if (windDir > 78.75 && windDir <= 101.25) {
       return "East South East";
-    } else if (windDirection > 101.25 && windDirection <= 123.75) {
+    } else if (windDir > 101.25 && windDirection <= 123.75) {
       return "East South East";
-    } else if (windDirection > 123.75 && windDirection <= 146.25) {
+    } else if (windDir > 123.75 && windDirection <= 146.25) {
       return "South East";
     } else if (windDirection > 146.25 && windDirection <= 168.75) {
       return "South South East";
