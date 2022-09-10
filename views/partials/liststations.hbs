@@ -1,12 +1,13 @@
 {{#each station}}
   <section class="ui segment">
     <h2 class= "ui header">
-      {{stationName}}
+      {{stationname}}
+      {{>lastreadings}}
     </h2>
-    <a href="/station/{{stationName}}" class="ui icon button">
+    <a href="/station/{{id}}" class="ui icon button">
       <i class="icon folder open"></i>
     </a>
-    <a href="/dashboard/deletestation/{{stationName}}" class="ui icon button">
+    <a href="/dashboard/deletestation/{{id}}" class="ui icon button">
       <i class="red icon trash"></i>
     </a>
   </section>
