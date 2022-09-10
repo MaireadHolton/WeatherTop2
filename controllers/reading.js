@@ -5,21 +5,21 @@ const stationStore = require("../models/station-store");
 
 const reading = {
   index(request, response) {
-    const stationName = request.params.name;
+    const stationId = request.params.id;
     const readingId = request.params.readingid;
-    logger.debug(`Editing Reading ${readingId} from Station ${stationName}`);
+    logger.debug(`Editing Reading ${readingId} from Station ${stationId}`);
     const viewData = {
       title: "Edit Reading",
-      station: stationStore.getStation(stationName),
-      reading: stationStore.getReading(stationName, readingId)
+      station: stationStore.getStation(stationId),
+      reading: stationStore.getReading(stationId, readingId)
     };
     response.render("reading", viewData);
   },
 
   update(request, response) {
-    const stationName = request.params.name;
+    const stationId = request.params.id;
     const readingId = request.params.readingid;
-    const reading = stationStore.getReading(stationName, readingId);
+    const reading = stationStore.getReading(stationId, readingId);
     const newReading = {
       code: request.body.code,
       temp: request.body.temp,
@@ -27,9 +27,9 @@ const reading = {
       windDir: request.body.windDir,
       pressure: request.body.pressure
     };
-    logger.debug(`Updating Reading ${readingId} from Station ${stationName}`);
+    logger.debug(`Updating Reading ${readingId} from Station ${stationId}`);
     stationStore.updateReading(reading, newReading);
-    response.redirect("/station/" + stationName);
+    response.redirect("/station/" + stationId);
   }
 };
 

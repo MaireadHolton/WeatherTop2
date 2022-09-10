@@ -7,9 +7,9 @@ const uuid = require("uuid");
 
 const station = {
   index(request, response) {
-    const stationName = request.params.name;
-    logger.debug("Station id = " + stationName);
-    const station = stationStore.getStation(stationName);
+    const stationId = request.params.id;
+    logger.debug("Station id = " + stationId);
+    const station = stationStore.getStation(stationId);
     const readings = stationAnalytics.getReadings (station);
     const lastTemp = stationAnalytics.getTemp(station);
     const lastCode = stationAnalytics.getCode(station);
@@ -36,16 +36,16 @@ const station = {
   },
 
   deleteReading(request, response) {
-    const stationName = request.params.name;
+    const stationId = request.params.id;
     const readingId = request.params.readingid;
-    logger.debug(`Deleting Reading ${readingId} from Station ${stationName}`);
-    stationStore.removeReading(stationName, readingId);
-    response.redirect("/station/" + stationName);
+    logger.debug(`Deleting Reading ${readingId} from Station ${stationId}`);
+    stationStore.removeReading(stationId, readingId);
+    response.redirect("/station/" + stationId);
   },
 
   addReading(request, response) {
-    const stationName = request.params.name;
-    const station = stationStore.getStation(stationName);
+    const stationId = request.params.id;
+    const station = stationStore.getStation(stationId);
     const newReading = {
       id: uuid.v1(),
       code: request.body.code,
@@ -55,8 +55,8 @@ const station = {
       pressure: request.body.pressure
     };
     logger.debug("New Reading = ", newReading);
-    stationStore.addReading(stationName, newReading);
-    response.redirect("/station/" + stationName);
+    stationStore.addReading(stationId, newReading);
+    response.redirect("/station/" + stationId);
   }
 };
 
