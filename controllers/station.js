@@ -17,6 +17,8 @@ const station = {
     const WindDir = stationAnalytics.getWindDirection(station);
     const lastWind = stationAnalytics.Beau(Number(readings));
     const lastPressure = stationAnalytics.getPressure(station);
+    const tempTrend = stationAnalytics.timeTrend(station);
+    const pressureTrend = stationAnalytics.pressureTrend(station);
 
     const viewData = {
       name: "station",
@@ -29,7 +31,10 @@ const station = {
         WindComp: stationAnalytics.getWindComp(Number(WindDir)),
         tempF: stationAnalytics.getTempF(Number(lastTemp)),
         weatherCodeIcons: stationAnalytics.getWeatherCodeIcons(Number(lastCode)),
-        windChill: stationAnalytics.getWindChill(lastTemp,lastWindSpeed)
+        windChill: stationAnalytics.getWindChill(lastTemp,lastWindSpeed),
+        tempTrend: tempTrend,
+        pressureTrend:  pressureTrend
+      }
     }
   };
     response.render("station", viewData);
@@ -48,6 +53,16 @@ const station = {
     const station = stationStore.getStation(stationId);
     const newReading = {
       id: uuid.v1(),
+      date:
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate() +
+        " " +
+        (today.getHours() + 1) +
+        ":" +
+        today.getMinutes(),
       code: request.body.code,
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,

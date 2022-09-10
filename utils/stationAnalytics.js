@@ -11,9 +11,9 @@ const stationAnalytics = {
   },
   
   getMaxReading(station) {
-    let maxReading = null;
+    let maxTemp = null;
     if (station.readings.length > 0) {
-      maxReading = station.readings[0];
+      maxTemp = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
         maxReading = station.readings[i];
       }
@@ -92,6 +92,17 @@ getTemp(station) {
       readings = station.readings[station.readings.length - 1].temp;
     }
     return lastTemp;
+  },
+  
+    getMaxReading(station) {
+    let maxTemp = null;
+    if (station.readings.length > 0) {
+      maxTemp = station.readings[0];
+      for (let i = 1; i < station.readings.length; i++) {
+        maxReading = station.readings[i];
+      }
+    }
+    return maxReading;
   },
       
 getTempF(temp) {
