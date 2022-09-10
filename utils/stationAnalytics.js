@@ -115,8 +115,8 @@ const stationAnalytics = {
     return readings;
   },
 
-  getTempF(temp) {
-    return temp * 1.8 + 32;
+  getTempF(getTemp) {
+    return getTemp * 1.8 + 32;
   },
 
   getWindSpeed(station) {

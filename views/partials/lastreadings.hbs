@@ -16,7 +16,7 @@
         <div class="card">
             <div class="extra">
                 <h3 class="header">
-                    Weather <i class="${_station.lastWeather} large white"></i>
+                    Weather
                 </h3>
                 <h4 class="header"> {{stationSummary.weatherCode}}
                   <i class="{{stationSummary.weatherCodeIcons}} large white"></i>
@@ -29,13 +29,13 @@
                     Temp <i class="right floated temperature high icon large blue"></i>
                 </h3>
                 <h4 class="header">
-                      {{stationSummary.lastReading.temp}} C
+                      {{stationSummary.tempC}} C
                       <br>
                      {{stationSummary.tempF}} F
                     <br>
-                     Max: {{stationSummary.maxReading.temp}}
+                     Max: {{stationSummary.maxTemp}}
                       <br>
-                      Min: {{stationSummary.minReading.temp}}
+                      Min: {{stationSummary.minTemp}}
                 </h4>
             </div>
         </div>
@@ -51,9 +51,9 @@
                     <br>
                     Feels like: {{stationSummary.windChill}} 
                     <br>
-                    Max: {{stationSummary.maxReading.windSpeed}}
+                    Max: {{stationSummary.maxWind}}
                     <br>
-                    Min: {{stationSummary.minReading.windSpeed}}
+                    Min: {{stationSummary.minWind}}
           
                 </h4>
             </div>
@@ -64,11 +64,11 @@
                     Pressure <i class="right floated arrows alternate icon orange extra large"></i>
                 </h3>
                 <h4 class="header">
-                      {{stationSummary.lastReading.pressure}} hpa
+                      {{stationSummary.Pressure}} hpa
                     <br>
-                    Max: {{stationSummary.maxReading.pressure}}
+                    Max: {{stationSummary.maxPressure}}
                     <br>
-                    Min: {{stationSummary.minReading.pressure}}
+                    Min: {{stationSummary.minPressure}}
                 </h4>
             </div>
         </div>

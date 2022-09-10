@@ -34,14 +34,16 @@ const station = {
         weatherCode: stationAnalytics.getCodeToWeather(Number(lastCode)),
         beaufort: stationAnalytics.getBeaufort(Number(lastWindSpeed)),
         WindComp: stationAnalytics.getWindComp(Number(WindDir)),
+        tempC : stationAnalytics.getTemp(station),
         tempF: stationAnalytics.getTempF(Number(lastTemp)),
+        pressure: stationAnalytics.getTempPressure(station),
         weatherCodeIcons: stationAnalytics.getWeatherCodeIcons(
           Number(lastCode)
         ),
         windChill: stationAnalytics.getWindChill(lastTemp, lastWindSpeed),
         tempTrend: tempTrend,
         windTrend: windTrend,
-        pressureTrend: pressureTrend,
+        pressureTrend: pressureTrend
       },
     };
     response.render("station", viewData);
