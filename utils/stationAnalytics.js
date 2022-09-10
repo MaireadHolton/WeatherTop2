@@ -96,13 +96,19 @@ const stationAnalytics = {
     }
     return minTemp;
   },
-  
- tempTrend (station){
-  let readings = 0;
+
+  tempTrend(station) {
+    let readings = 0;
     if (station.readings.length > 2) {
-      if  ((station.readings[-1].temp > station.readings[-2].temp ) && (station.readings[-2].temp > station.readings[-1].temp)){ 
+      if (
+        station.readings[-1].temp > station.readings[-2].temp &&
+        station.readings[-2].temp > station.readings[-1].temp
+      ) {
         readings = 1;
-      } else if (( station.readings[-3].temp < station.readings[-2].temp) && (station.readings[-2].temp< station.readings[-1].temp)) {
+      } else if (
+        station.readings[-3].temp < station.readings[-2].temp &&
+        station.readings[-2].temp < station.readings[-1].temp
+      ) {
         readings = -1;
       }
     }
@@ -146,13 +152,19 @@ const stationAnalytics = {
     }
     return minWind;
   },
-  
-  windTrend (station){
-  let readings = 0;
+
+  windTrend(station) {
+    let readings = 0;
     if (station.readings.length > 2) {
-      if  ((station.readings[-1].windSpeed > station.readings[-2].windSpeed ) && (station.readings[-2].windSpeed > station.readings[-1].windSpeed)){ 
+      if (
+        station.readings[-1].windSpeed > station.readings[-2].windSpeed &&
+        station.readings[-2].windSpeed > station.readings[-1].windSpeed
+      ) {
         readings = 1;
-      } else if (( station.readings[-3].windSpeed < station.readings[-2].windSpeed) && (station.readings[-2].windSpeed< station.readings[-1].windSpeed)) {
+      } else if (
+        station.readings[-3].windSpeed < station.readings[-2].windSpeed &&
+        station.readings[-2].windSpeed < station.readings[-1].windSpeed
+      ) {
         readings = -1;
       }
     }
@@ -290,18 +302,24 @@ const stationAnalytics = {
     }
     return minPressure;
   },
-  
-  pressureTrend (station){
-  let readings = 0;
+
+  pressureTrend(station) {
+    let readings = 0;
     if (station.readings.length > 2) {
-      if  ((station.readings[2].pressure > station.readings[1].pressure ) && (station.readings[1].pressure > station.readings[0].pressure)){ 
+      if (
+        station.readings[2].pressure > station.readings[1].pressure &&
+        station.readings[1].pressure > station.readings[0].pressure
+      ) {
         readings = 1;
-      } else if (( station.readings[2].pressure < station.readings[1].pressure) && (station.readings[1].pressure< station.readings[0].pressure)) {
+      } else if (
+        station.readings[2].pressure < station.readings[1].pressure &&
+        station.readings[1].pressure < station.readings[0].pressure
+      ) {
         readings = -1;
       }
     }
     return readings;
-  }
+  },
 };
 
 module.exports = stationAnalytics;
