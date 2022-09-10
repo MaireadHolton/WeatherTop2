@@ -9,28 +9,6 @@ const stationAnalytics = {
     }
     return readings;
   },
-  
-  getMaxReading(station) {
-    let maxTemp = null;
-    if (station.readings.length > 0) {
-      maxTemp = station.readings[0];
-      for (let i = 1; i < station.readings.length; i++) {
-        maxReading = station.readings[i];
-      }
-    }
-    return maxReading;
-  },
-
-  getMinReading(station) {
-    let minReading = null;
-    if (station.readings.length > 0) {
-      minReading = station.readings[0];
-      for (let i = 1; i > station.readings.length; i++) {
-        minReading = station.readings[i];
-      }
-    }
-    return minReading;
-  },
       
   getCode(station) {
     let lastCode = null;
@@ -94,15 +72,30 @@ getTemp(station) {
     return lastTemp;
   },
   
-    getMaxReading(station) {
+    getMaxTemp(station) {
     let maxTemp = null;
     if (station.readings.length > 0) {
       maxTemp = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        maxReading = station.readings[i];
-      }
+        if(station.reading.temp > maxTemp){
+          maxTemp = station.reading.Temp
+          }
+        }   
     }
-    return maxReading;
+    return maxTemp;
+  },
+  
+  getMinTemp(station) {
+    let minTemp = null;
+    if (station.readings.length > 0) {
+      minTemp = station.readings[0];
+      for (let i = 1; i < station.readings.length; i++) {
+        if(station.reading.temp < minTemp){
+          minTemp = station.reading.Temp
+          }
+        }   
+    }
+    return minTemp;
   },
       
 getTempF(temp) {
@@ -116,7 +109,34 @@ getWindSpeed(station) {
     }
     return lastWindSpeed;
   },
-      
+  
+  
+  getMaxWind(station) {
+    let maxWind = null;
+    if (station.readings.length > 0) {
+      maxWind = station.readings[0];
+      for (let i = 1; i < station.readings.length; i++) {
+        if(station.reading.windSpeed > maxWind){
+          maxWind = station.reading.windSpeed
+          }
+        }   
+    }
+    return maxWind;
+  },
+  
+  getMinWind(station) {
+    let minWind = null;
+    if (station.readings.length > 0) {
+      minWind = station.readings[0];
+      for (let i = 1; i < station.readings.length; i++) {
+        if(station.reading.windSpeed < minWind){
+          minWind = station.reading.windSpeed
+          }
+        }   
+    }
+    return minWind;
+  },
+  
   getBeaufort (windSpeed){
     let Beau = null;
       if (windSpeed == 0) {
@@ -221,9 +241,34 @@ getWindComp (windDirection) {
       readings = station.readings[station.readings.length - 1].pressure;
     }
     return lastPressure;
+  }, 
+
+getMaxPressure(station) {
+    let maxPressure = null;
+    if (station.readings.length > 0) {
+      maxPressure = station.readings[0];
+      for (let i = 1; i < station.readings.length; i++) {
+        if(station.reading.pressure > maxPressure){
+          maxPressure = station.reading.pressure
+          }
+        }   
+    }
+    return maxPressure;
+  },
+  
+      getMinPressure(station) {
+    let minPressure = null;
+    if (station.readings.length > 0) {
+      minPressure = station.readings[0];
+      for (let i = 1; i < station.readings.length; i++) {
+        if(station.reading.pressure < minPressure){
+          minPressure = station.reading.pressure
+          }
+        }   
+    }
+    return minPressure;
   }
-};    
-      
+};
       
 module.exports = stationAnalytics;
 
