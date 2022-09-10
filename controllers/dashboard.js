@@ -10,12 +10,23 @@ const dashboard = {
   index(request, response) {
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
+    const stations = stationStore.getUserStations(loggedInUser.id);
     const viewData = {
       title: "Station Dashboard ",
       stations: stationStore.getAllStations()
     };
 
     logger.info("about to render", stationStore.getAllStations());
+    response.render("dashboard", viewData);
+  },
+  
+  async addreport(request, response) {
+    logger.info("rendering new report");
+    const report = {};
+    const viewData = {
+      title: "Weather Report",
+      reading : report
+    };
     response.render("dashboard", viewData);
   },
 

@@ -45,6 +45,14 @@
           "pressure": "999"
         }
       ]
+    },
+    {
+      "id": "b25320b0-30f0-11ed-b100-a9d126ece120",
+      "user": null,
+      "name": "",
+      "latitude": "",
+      "longitude": "",
+      "readings": []
     }
   ]
 }
