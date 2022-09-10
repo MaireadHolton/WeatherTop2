@@ -10,10 +10,12 @@ const dashboard = {
   index(request, response) {
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
-    const stations = stationStore.getAllStations();
+    const stations = stationStore.getUserStations();
+    console.log(stations);
+    
     const viewData = {
       title: "Station Dashboard ",
-      stations: stationStore.getAllStations()
+      stations: stations
     };
 
     logger.info("about to render", stationStore.getAllStations());
@@ -41,7 +43,7 @@ const dashboard = {
     const loggedInUser = accounts.getCurrentUser(request);
     const newStation = {
       id: uuid.v1(),
-      user: loggedInUser,
+      user: loggedInUser.id,
       name: request.body.name,
       latitude: request.body.latitude,
       longitude: request.body.longitude
