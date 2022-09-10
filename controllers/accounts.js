@@ -7,14 +7,14 @@ const uuid = require("uuid");
 const accounts = {
   index(request, response) {
     const viewData = {
-      title: "Login or Signup"
+      title: "Login or Signup",
     };
     response.render("index", viewData);
   },
 
   login(request, response) {
     const viewData = {
-      title: "Login to the Service"
+      title: "Login to the Service",
     };
     response.render("login", viewData);
   },
@@ -26,7 +26,7 @@ const accounts = {
 
   signup(request, response) {
     const viewData = {
-      title: "Login to the Service"
+      title: "Login to the Service",
     };
     response.render("signup", viewData);
   },
@@ -39,7 +39,7 @@ const accounts = {
     response.redirect("/");
   },
 
- authenticate(request, response) {
+  authenticate(request, response) {
     const user = userstore.getUserByEmail(request.body.email);
     const password = userstore.getUserByPassword(request.body.password);
     if (user && password) {
@@ -58,7 +58,7 @@ const accounts = {
     } else {
       return null;
     }
-  }
+  },
 };
 
 module.exports = accounts;

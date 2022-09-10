@@ -1,6 +1,5 @@
 "use strict";
 
-    
 const stationAnalytics = {
   getReadings(station) {
     let readings = null;
@@ -9,7 +8,7 @@ const stationAnalytics = {
     }
     return readings;
   },
-      
+
   getCode(station) {
     let lastCode = null;
     if (station.readings.length > 0) {
@@ -17,8 +16,8 @@ const stationAnalytics = {
     }
     return lastCode;
   },
-      
-getCodeToWeather(code) {
+
+  getCodeToWeather(code) {
     switch (code) {
       case 100:
         return "Clear";
@@ -40,8 +39,8 @@ getCodeToWeather(code) {
         return "error";
     }
   },
-      
- getWeatherCodeIcons(code) {
+
+  getWeatherCodeIcons(code) {
     switch (code) {
       case 100:
         return "sun icon";
@@ -64,84 +63,107 @@ getCodeToWeather(code) {
     }
   },
 
-getTemp(station) {
+  getTemp(station) {
     let lastTemp = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].temp;
     }
     return lastTemp;
   },
-  
-    getMaxTemp(station) {
+
+  getMaxTemp(station) {
     let maxTemp = null;
     if (station.readings.length > 0) {
       maxTemp = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        if(station.reading.temp > maxTemp){
-          maxTemp = station.reading.Temp
-          }
-        }   
+        if (station.reading.temp > maxTemp) {
+          maxTemp = station.reading.Temp;
+        }
+      }
     }
     return maxTemp;
   },
-  
+
   getMinTemp(station) {
     let minTemp = null;
     if (station.readings.length > 0) {
       minTemp = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        if(station.reading.temp < minTemp){
-          minTemp = station.reading.Temp
-          }
-        }   
+        if (station.reading.temp < minTemp) {
+          minTemp = station.reading.Temp;
+        }
+      }
     }
     return minTemp;
   },
-      
-getTempF(temp) {
+  
+ tempTrend (station){
+  let readings = 0;
+    if (station.readings.length > 2) {
+      if  ((station.readings[-1].temp > station.readings[-2].temp ) && (station.readings[-2].temp > station.readings[-1].temp)){ 
+        readings = 1;
+      } else if (( station.readings[-3].temp < station.readings[-2].temp) && (station.readings[-2].temp< station.readings[-1].temp)) {
+        readings = -1;
+      }
+    }
+    return readings;
+  },
+
+  getTempF(temp) {
     return temp * 1.8 + 32;
   },
-      
-getWindSpeed(station) {
-  let lastWindSpeed = 0;
+
+  getWindSpeed(station) {
+    let lastWindSpeed = 0;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].windSpeed;
     }
     return lastWindSpeed;
   },
-  
-  
+
   getMaxWind(station) {
     let maxWind = null;
     if (station.readings.length > 0) {
       maxWind = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        if(station.reading.windSpeed > maxWind){
-          maxWind = station.reading.windSpeed
-          }
-        }   
+        if (station.reading.windSpeed > maxWind) {
+          maxWind = station.reading.windSpeed;
+        }
+      }
     }
     return maxWind;
   },
-  
+
   getMinWind(station) {
     let minWind = null;
     if (station.readings.length > 0) {
       minWind = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        if(station.reading.windSpeed < minWind){
-          minWind = station.reading.windSpeed
-          }
-        }   
+        if (station.reading.windSpeed < minWind) {
+          minWind = station.reading.windSpeed;
+        }
+      }
     }
     return minWind;
   },
   
-  getBeaufort (windSpeed){
+  windTrend (station){
+  let readings = 0;
+    if (station.readings.length > 2) {
+      if  ((station.readings[-1].windSpeed > station.readings[-2].windSpeed ) && (station.readings[-2].windSpeed > station.readings[-1].windSpeed)){ 
+        readings = 1;
+      } else if (( station.readings[-3].windSpeed < station.readings[-2].windSpeed) && (station.readings[-2].windSpeed< station.readings[-1].windSpeed)) {
+        readings = -1;
+      }
+    }
+    return readings;
+  },
+
+  getBeaufort(windSpeed) {
     let Beau = null;
-      if (windSpeed == 0) {
+    if (windSpeed == 0) {
       return 0;
-      Beau= "Calm";
+      Beau = "Calm";
     } else if (windSpeed >= 1 && windSpeed <= 5) {
       return 1;
       Beau = "Light Air";
@@ -181,16 +203,16 @@ getWindSpeed(station) {
     return -1;
     return Beau;
   },
-      
-getWindDirection(station) {
+
+  getWindDirection(station) {
     let windDirection = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].windDirection;
     }
     return windDirection;
   },
-     
-getWindComp (windDirection) {
+
+  getWindComp(windDirection) {
     if (windDirection > 11.25 && windDirection <= 33.75) {
       return "North North East";
     } else if (windDirection > 33.75 && windDirection <= 56.25) {
@@ -225,8 +247,8 @@ getWindComp (windDirection) {
       return "North";
     }
   },
-      
- getwindChill(temp, windSpeed) {
+
+  getwindChill(temp, windSpeed) {
     return (
       13.12 +
       0.6215 * temp -
@@ -234,42 +256,52 @@ getWindComp (windDirection) {
       0.3965 * temp * Math.pow(windSpeed, 0.16)
     ).toFixed(2);
   },
-      
+
   getPressure(station) {
     let lastPressure = null;
     if (station.readings.length > 0) {
       readings = station.readings[station.readings.length - 1].pressure;
     }
     return lastPressure;
-  }, 
+  },
 
-getMaxPressure(station) {
+  getMaxPressure(station) {
     let maxPressure = null;
     if (station.readings.length > 0) {
       maxPressure = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        if(station.reading.pressure > maxPressure){
-          maxPressure = station.reading.pressure
-          }
-        }   
+        if (station.reading.pressure > maxPressure) {
+          maxPressure = station.reading.pressure;
+        }
+      }
     }
     return maxPressure;
   },
-  
-      getMinPressure(station) {
+
+  getMinPressure(station) {
     let minPressure = null;
     if (station.readings.length > 0) {
       minPressure = station.readings[0];
       for (let i = 1; i < station.readings.length; i++) {
-        if(station.reading.pressure < minPressure){
-          minPressure = station.reading.pressure
-          }
-        }   
+        if (station.reading.pressure < minPressure) {
+          minPressure = station.reading.pressure;
+        }
+      }
     }
     return minPressure;
+  },
+  
+  pressureTrend (station){
+  let readings = 0;
+    if (station.readings.length > 2) {
+      if  ((station.readings[2].pressure > station.readings[1].pressure ) && (station.readings[1].pressure > station.readings[0].pressure)){ 
+        readings = 1;
+      } else if (( station.readings[2].pressure < station.readings[1].pressure) && (station.readings[1].pressure< station.readings[0].pressure)) {
+        readings = -1;
+      }
+    }
+    return readings;
   }
 };
-      
-module.exports = stationAnalytics;
 
-      
+module.exports = stationAnalytics;

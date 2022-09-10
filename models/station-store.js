@@ -5,7 +5,7 @@ const JsonStore = require("./json-store");
 
 const stationStore = {
   store: new JsonStore("./models/station-store.json", {
-    stationCollection: []
+    stationCollection: [],
   }),
   collection: "stationCollection",
 
@@ -53,7 +53,7 @@ const stationStore = {
   getReading(id, readingId) {
     const station = this.store.findOneBy(this.collection, { id: id });
     const readings = station.readings.filter(
-      reading => reading.id == readingId
+      (reading) => reading.id == readingId
     );
     return readings[0];
   },
@@ -62,7 +62,7 @@ const stationStore = {
     reading.code = updatedReading.code;
 
     this.store.save();
-  }
+  },
 };
 
 module.exports = stationStore;

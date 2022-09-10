@@ -12,22 +12,22 @@ const dashboard = {
     const loggedInUser = accounts.getCurrentUser(request);
     const stations = stationStore.getUserStations();
     console.log(stations);
-    
+
     const viewData = {
       title: "Station Dashboard ",
-      stations: stations
+      stations: stations,
     };
 
     logger.info("about to render", stationStore.getAllStations());
     response.render("dashboard", viewData);
   },
-  
+
   async addreport(request, response) {
     logger.info("rendering new report");
     const report = {};
     const viewData = {
       title: "Weather Report",
-      reading : report
+      reading: report,
     };
     response.render("dashboard", viewData);
   },
@@ -47,12 +47,12 @@ const dashboard = {
       name: request.body.name,
       latitude: request.body.latitude,
       longitude: request.body.longitude,
-      readings: []
+      readings: [],
     };
     logger.debug("Creating a new Station", newStation);
     stationStore.addStation(newStation);
     response.redirect("/dashboard");
-  }
+  },
 };
 
 module.exports = dashboard;

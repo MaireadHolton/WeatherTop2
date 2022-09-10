@@ -10,14 +10,15 @@ const station = {
     const stationId = request.params.id;
     logger.debug("Station id = " + stationId);
     const station = stationStore.getStation(stationId);
-    const readings = stationAnalytics.getReadings (station);
+    const readings = stationAnalytics.getReadings(station);
     const lastTemp = stationAnalytics.getTemp(station);
     const lastCode = stationAnalytics.getCode(station);
     const lastWindSpeed = stationAnalytics.getWindspeed(station);
     const WindDir = stationAnalytics.getWindDirection(station);
-    const lastWind = stationAnalytics.Beau(Number(readings));
+    const lastWind = stationAnalytics.getBeaufort(Number(readings));
     const lastPressure = stationAnalytics.getPressure(station);
-    const tempTrend = stationAnalytics.timeTrend(station);
+    const tempTrend = stationAnalytics.tempTrend(station);
+    const windTrend = stationAnalytics.windTrend(station);
     const pressureTrend = stationAnalytics.pressureTrend(station);
 
     const viewData = {
@@ -30,13 +31,15 @@ const station = {
         beaufort: stationAnalytics.getBeaufort(Number(lastWindSpeed)),
         WindComp: stationAnalytics.getWindComp(Number(WindDir)),
         tempF: stationAnalytics.getTempF(Number(lastTemp)),
-        weatherCodeIcons: stationAnalytics.getWeatherCodeIcons(Number(lastCode)),
-        windChill: stationAnalytics.getWindChill(lastTemp,lastWindSpeed),
+        weatherCodeIcons: stationAnalytics.getWeatherCodeIcons(
+          Number(lastCode)
+        ),
+        windChill: stationAnalytics.getWindChill(lastTemp, lastWindSpeed),
         tempTrend: tempTrend,
-        pressureTrend:  pressureTrend
-      }
-    }
-  };
+        windTrend: windTrend,
+        pressureTrend: pressureTrend,
+      },
+    };
     response.render("station", viewData);
   },
 
@@ -67,12 +70,12 @@ const station = {
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,
       windDir: request.body.windDir,
-      pressure: request.body.pressure
+      pressure: request.body.pressure,
     };
     logger.debug("New Reading = ", newReading);
     stationStore.addReading(stationId, newReading);
     response.redirect("/station/" + stationId);
-  }
+  },
 };
 
 module.exports = station;

@@ -11,7 +11,7 @@ const reading = {
     const viewData = {
       title: "Edit Reading",
       station: stationStore.getStation(stationId),
-      reading: stationStore.getReading(stationId, readingId)
+      reading: stationStore.getReading(stationId, readingId),
     };
     response.render("reading", viewData);
   },
@@ -25,12 +25,12 @@ const reading = {
       temp: request.body.temp,
       windSpeed: request.body.windSpeed,
       windDir: request.body.windDir,
-      pressure: request.body.pressure
+      pressure: request.body.pressure,
     };
     logger.debug(`Updating Reading ${readingId} from Station ${stationId}`);
     stationStore.updateReading(reading, newReading);
     response.redirect("/station/" + stationId);
-  }
+  },
 };
 
 module.exports = reading;
